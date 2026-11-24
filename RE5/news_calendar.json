@@ -1,0 +1,15 @@
+{
+ "about": "Scheduled US releases that can move ethereum suddenly. Times are New York time (24-hour). A 15-minute market is skipped if it touches [release - 5 min, release + 30 min]. Enforced only above $10 per trade; at $10 it is logged as advisory. Sources: bls.gov/schedule/2026, federalreserve.gov FOMC calendar (checked 2026-11-04). Add new dates in the same format; the app warns when the list is about to run out.",
+ "events": [
+  {"et": "2026-11-06 08:30", "name": "Jobs report (Employment Situation)"},
+  {"et": "2026-11-10 08:30", "name": "CPI inflation"},
+  {"et": "2026-11-13 08:30", "name": "PPI"},
+  {"et": "2026-12-04 08:30", "name": "Jobs report (Employment Situation)"},
+  {"et": "2026-12-09 14:00", "name": "Fed rate decision (FOMC)"},
+  {"et": "2026-12-09 14:30", "name": "Fed press conference"},
+  {"et": "2026-12-10 08:30", "name": "CPI inflation"},
+  {"et": "2026-12-15 08:30", "name": "PPI"},
+  {"et": "2027-01-27 14:00", "name": "Fed rate decision (FOMC, tentative date)"},
+  {"et": "2027-01-27 14:30", "name": "Fed press conference (tentative date)"}
+ ]
+}

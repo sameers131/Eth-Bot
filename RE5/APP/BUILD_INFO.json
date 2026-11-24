@@ -1,0 +1,24 @@
+{
+ "release": "V7-D",
+ "mode": "PAPER_ONLY",
+ "entry_budget_usd": 1000,
+ "duration_minutes_default": 480,
+ "core_change": "corrected time-weighted settlement proxy; price backup requires ETH risk; displayed bid book paper partial exits; config-driven ledger",
+ "momentum_filter": "research only; no veto",
+ "caveats": [
+  "sampled proxy not official settlement",
+  "displayed bid depth not verified fills",
+  "no live orders"
+ ],
+ "naming_convention": "BIGBET_V7D_ENTRY_95-99c_STRIKE_0p03pct_VOL_1p8xEARLY_1p4xLATE_SETTLESTOP_FIXEDAVG_PARTIAL_BOOKBIDS_ETHSTOP_0p5x_PRICEBACKUP_88c_ETH_LT_1x_DAILY_2STOPS_ORIGINALBID_0p3x_PAPER_<minutes>min_<yyyymmdd_hhmmss>_<runid>.zip",
+ "change_scope": "passive entry ask and open-position exit bid telemetry ONLY",
+ "budget_usd": 10,
+ "execution_mode": "PAPER_ONLY",
+ "production_readiness": "NOT_VERIFIED_LIVE",
+ "version": "ETH V1.9.4 / RE5.5",
+ "built": "2026-11-18",
+ "notes": "ETH stop: wrong side 10 s, blind 50c emergency; V1.7 stop logged for comparison only; steady-60-s entry filter (own side ask >= 90c for prior 60 s at normal checkpoints); stale ETHUSD_RTI reading = 120 s glitch grace + auto-restart eligible; Early-Hold lead 2.0x (option B); market mood light; V1.9.4 mood regime: after HIGH market no entries, calm market Early-Hold 1.5x + steady 85c, unknown = V1.9.2 rules",
+ "asset": "ETH",
+ "series": "KXETH15M",
+ "index": "ETHUSD_RTI"
+}
