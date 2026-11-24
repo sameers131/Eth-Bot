@@ -1,0 +1,17 @@
+BIGBET ETH Live Studio V1.9.2  (engine RE5.5)          built 2026-11-14
+=====================================================================
+Start exactly like before:  python .\BIGBET_LIVE_STUDIO_V12.py
+Same data folder and settings. Includes the V1.9.1 price-feed fix.
+
+ONE CHANGE (option B, chosen Nov 14): early entries (7 to 4 minutes before close, "Early-Hold")
+now need ETH to be at least 2.0x its normal wobble away from the target (was 1.5x).
+Everything else unchanged: normal entries (last 3 minutes), steady-60-s filter, 10-s stop,
+daily stop, override, sizes.
+
+WHY: Nov 14 7:15 PM: early entry at lead 1.81x while ETH trended up all evening; -$5.66 at $10.
+Simulation, all 420 recorded ETH markets, $10 per trade:
+                      real markets              stress test
+  V1.9.1 (1.5x)       2 losing, +$35.01         9 losing, +$20.56
+  V1.9.2 (2.0x)       2 losing, +$24.88         5 losing, +$28.73
+On the 33,016 recorded entry checks, the ONLY decisions that changed are 156 early-entry
+checks with a lead between 1.5x and 2.0x (now skipped).

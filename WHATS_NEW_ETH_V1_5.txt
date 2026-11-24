@@ -1,0 +1,5 @@
+BIGBET ETH Live Studio V1.5  (engine RE5.5)          built 2026-11-09
+=====================================================================
+ETH ONLY. ETH V1.5 = ETH V1.4 with ONE change: "Run for" now goes up to 10 hours (was 8).
+Everything else is identical to V1.4 (Rule C, stop-loss, sell pricing, fast checks, sizes, daily stop).
+Start the same way:   python .\BIGBET_LIVE_STUDIO_V12.py

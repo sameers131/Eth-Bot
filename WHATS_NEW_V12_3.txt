@@ -1,0 +1,33 @@
+BIGBET Live Studio V12.3  (engine RE5.4)          built 2026-11-04
+=====================================================================
+Start it exactly like before, from PowerShell in this folder:
+    python .\BIGBET_LIVE_STUDIO_V12.py
+Your data folder (~\BIGBET_ETH_DATA) and settings stay where they are. Nothing to copy.
+
+AT $10 PER TRADE NOTHING CHANGES IN HOW IT TRADES.
+
+New in the app
+  * "Per trade" box (Controls). Only sizes the bot has EARNED appear: $10 -> $20 -> $40 -> $60.
+  * "Size & safety" row in the Ready check: ladder progress, last-7-days P/L, next news skip.
+  * "Unlock $20" button lights up only when ALL are true:
+        - 40 closed trades at the current size
+        - at most 1 loss among them
+        - (first step only) at least one real stop-loss exit has happened
+    You still type UNLOCK 20 to confirm; then you choose the size yourself.
+  * Two losses within 40 trades at a bigger size -> the ladder steps DOWN one size by itself.
+
+Scaled with the size automatically (all from ONE number):
+                     $10      $20      $40      $60
+  max cost/trade     $10      $20      $40      $60
+  max contracts       10       21       42       63
+  daily loss cap      $5      $10      $20      $30   (and 1 loss still stops the day)
+  shard top-up      <15:+20  <30:+40  <60:+80  <90:+120  (daily cap 4x size)
+
+Switched ON only above $10 (at $10 they are logged as "advisory" so we can see them):
+  * News blackout: skips any 15-min market touching [release - 5 min, release + 30 min]
+    for jobs reports, CPI, PPI and Fed decisions/press conferences (RE5\news_calendar.json).
+  * Weekly loss stop: if the last 7 days lost more than one trade size, no new entries until
+    you review the trades (send Claude the export) and press "Release weekly stop".
+
+New files in your data folder: closed_trades.jsonl (every real trade with its size) and
+ladder.json (unlock / step-down history). Both are included in exports.

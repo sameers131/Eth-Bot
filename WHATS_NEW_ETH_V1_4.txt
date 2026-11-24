@@ -1,0 +1,20 @@
+BIGBET ETH Live Studio V1.4  (engine RE5.5)          built 2026-11-08
+=====================================================================
+ETH ONLY. Separate from the BTC app in every way (own folder, data BIGBET_ETH_DATA, settings_eth.json, guards).
+Start the same way:   python .\BIGBET_LIVE_STUDIO_V12.py
+
+RULE C = Rule B + EARLY-HOLD
+  * Rule B unchanged: 90-99c, lead >= 2.0x at 180/150 s and >= 1.6x at 120/105/90/60/45/30 s.
+  * Early-Hold (new): one extra chance to enter between 7:00 and 4:00 left, ONLY when
+      - the favorite costs 90-99c, lead >= 1.5x, strike cushion >= 0.03%, 8 minutes of history, and
+      - the favorite's bid stayed at or above 90c for the whole previous 2 minutes (the bot must have watched all 2 minutes).
+    Still one trade per market. Same stop-loss.
+  Replay on all ETH data (95 markets): Rule B 41 trades / 3 stops / +$10.21 -> Rule C 56 / 3 / +$15.57.
+  Nov 7 (new data the rule was not designed on): 5 Early-Hold trades, 5 wins.
+
+FASTER, CLEANER STOP-LOSS SELLING
+  * Each sell attempt is priced from the order book read at that moment, deep enough for the whole position.
+  * While holding in the last 3 minutes the bot checks every ~0.5-1 s instead of ~2-3 s.
+
+PLAN: 2 paper sessions (~35 trades). Pass = at most 2 stops and a positive total. Then live at $10,
+not at the same time as BTC live.

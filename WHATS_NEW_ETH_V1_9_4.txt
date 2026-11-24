@@ -1,0 +1,22 @@
+BIGBET ETH Live Studio V1.9.4  (engine RE5.5)          built 2026-11-18
+
+WHAT CHANGED - the bot now follows the market mood (option B)
+  Before each 15-minute market it measures how jumpy ETH was in the PREVIOUS market (the same number as the light):
+    LOW / MEDIUM (green)  -> calm rules: Early-Hold needs lead 1.5x (was 2.0x), steady filter 85c (was 90c)
+    HIGH (red)            -> the bot makes NO new entries in this market
+    no data yet           -> the V1.9.2 rules exactly (2.0x, 90c) - e.g. the first market after starting
+  Stops, sizing, entry prices 90-99c, the other checkpoints, daily limits and live arming are unchanged.
+  An open trade is still managed normally even when the next market is HIGH.
+
+WHY
+  Simulation on 455 recorded ETH markets at $10:
+    V1.9.2:  170 trades, 2 losing, +$27.26, worst day -$2.70
+    V1.9.4:  155 trades, 1 losing, +$35.37, worst day +$1.03   (better in both halves of the data)
+  Nov 17-18 night: 16 -> 18 trades, +$2.38 -> +$3.44.
+
+WHAT YOU WILL SEE IN THE LOG
+  MOOD_REGIME ticker=... previous market 0.031% per minute -> CALM: calm rules ...
+  SKIP_AFTER_HIGH_MOOD ticker=... : previous market was HIGH ...; no entry
+  Keep the app open: the engine also reads the app's mood samples, so the regime is known right away.
+
+TESTS: 281 tests, all pass (19 new in TEST_ETH_V1_9_4.py, including the real engine loop in calm / HIGH / no-data markets).

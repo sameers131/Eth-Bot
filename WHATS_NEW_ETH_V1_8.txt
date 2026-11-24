@@ -1,0 +1,26 @@
+BIGBET ETH Live Studio V1.8  (engine RE5.5)          built 2026-11-12
+=====================================================================
+Start exactly like before:  python .\BIGBET_LIVE_STUDIO_V12.py
+Same data folder (BIGBET_ETH_DATA) and settings as ETH V1.7. Nothing to copy.
+
+ONE CHANGE: the ETH stop-loss. Entries (Rule C + Early-Hold), free size $5-$40, daily stop,
+override, weekly stop, news skip, colors: unchanged.
+
+WHY: simulation on all 337 recorded ETH markets (18 exports, Nov 5-12), 187 trades:
+  * V1.7 stop (lead <= 0.5x, or 88c when lead < 1x) fired 9 times; 7 of them sold trades that
+    settled as WINNERS. All 3 live ETH losses (-$2.20, -$2.81, -$4.81) came from the 88c rule.
+
+NEW ETH STOP (paper AND live use the same rule):
+  1. Sell if ETH stays on the WRONG side of the target for 10 seconds in a row.
+     (A cross that comes back resets the timer.) In the final minute, "wrong side" uses the
+     projected 60-second settlement average.
+  2. Emergency: if the bot cannot see a fresh ETH price AND our side is 50c or less, sell at once.
+  Same 187 trades at $10: V1.7 = 9 stops, 7 losing trades, +$44.30
+                          V1.8 = 2 stops, 2 losing trades, +$49.95
+  (10 s chosen: 5-10 s give the same result; 15-20 s are too slow on real ETH losers.)
+
+HONEST LIMIT: only 2 of 187 trades were real losers. On one of them V1.8 lost more (-$3.05 vs
+-$1.61). The gain comes from not selling winners. Run PAPER first.
+
+SIDE-BY-SIDE LOG: whenever the OLD V1.7 stop would have sold, paper writes one line to
+eth_v18_stop_compare.csv and prints V17_STOP_WOULD_FIRE.

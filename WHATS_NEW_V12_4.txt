@@ -1,0 +1,12 @@
+BIGBET Live Studio V12.4  (engine RE5.5)          built 2026-11-05
+=====================================================================
+One fix on top of V12.3. Start the same way:  python .\BIGBET_LIVE_STUDIO_V12.py
+
+* Kalshi sometimes posts the payout a few seconds before its positions list updates.
+  V12.3 paused new trades the moment it saw that. V12.4 waits up to 45 seconds and
+  re-checks; if Kalshi catches up, the trade closes normally and trading continues.
+  If the position is STILL listed after 45 s, it pauses exactly like before.
+* While waiting, the position stays open in the journal, so no new trade can start.
+* Nothing else changed. Trade rules, sizes and caps are identical to V12.3.
+* New test file TEST_V12_4.py (4 tests). All 119 tests pass.
+

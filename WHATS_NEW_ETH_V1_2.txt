@@ -1,0 +1,24 @@
+BIGBET ETH Live Studio V1.2  (engine RE5.5)          built 2026-11-06
+=====================================================================
+ETH only. Same V7-D trading rules as V1.1. Start the same way, in its own PowerShell window:
+    python .\BIGBET_LIVE_STUDIO_V12.py
+
+1. PAPER or LIVE, any time, next to the BTC app
+   * Paper and live keep separate stop counters (ETH_PAPER / ETH_LIVE in BIGBET_ETH_DATA\DAILY_GUARD).
+   * Only KXETH15M positions and orders are ever looked at; BTC trades on the same account are invisible to it
+     (and BTC V12.7 ignores ETH trades the same way). The only shared thing is cash on Kalshi: if there is
+     not enough for a trade, that trade is skipped (no pause).
+   * No time-of-day schedule anywhere. Above $10: news blackout and weekly loss stop apply (same as BTC).
+
+2. Kalshi connection problems (same fixes as BTC V12.7)
+   * Price / market READS retry up to 3 more times (0.5 s, 1 s, 2 s). ORDERS are never retried.
+   * Entries keep running through up to 2 minutes of outage; only a longer outage pauses.
+   * Any 15-minute market in which a connection problem happened gets NO new entry.
+   * Auto-restart of a LIVE session you started (window must stay open): only if the stop was a connection
+     problem, you are flat with no open order, the account matches, at least 15 min of the plan are left;
+     re-checks every 60 s, max 3 restarts; ignores any schedule; the outage market is skipped.
+     Never after a stop-loss / loss limit / mismatch / open position / your STOP or EMERGENCY SELL.
+
+3. Every internal name is ETH now (files, logs, CSV exports, messages). The only place "BTC" appears is
+   the one-way safety guard in RE5\asset.py (never take top-up cash from the BTC bot's shard).
+   Note: exported CSVs are now named eth_v42_*.csv.

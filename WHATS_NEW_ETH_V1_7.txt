@@ -1,0 +1,12 @@
+BIGBET ETH Live Studio V1.7  (engine RE5.5)          built 2026-11-10
+=====================================================================
+ETH ONLY. ETH V1.7 = ETH V1.6 with exactly two changes:
+  1) FREE TRADE SIZE: $5, $10, $15, $20, $25, $30, $35 or $40 per trade. No ladder lock, no unlock
+     button, no automatic step-down after losses. Every cap still follows the size you pick:
+     order $ (fees included), contracts (size / 0.90), daily loss cap (half the size), weekly stop
+     (= the size, over 7 days), shard top-ups. Above $10 the news skip and weekly stop are ON and
+     LIVE start asks you to type the size to confirm (same as before).
+  2) NEW ETH COLORS: PURPLE header = paper, ORANGE header = live, lavender panels.
+     (The BTC app stays GREEN = paper, RED = live, yellow panels.)
+UNCHANGED: Rule C entries, stop-loss, sell pricing, fast checks, override after every loss, 10-hour runs.
+Start the same way:   python .\BIGBET_LIVE_STUDIO_V12.py

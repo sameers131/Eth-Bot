@@ -1,0 +1,20 @@
+BIGBET ETH Live Studio V1.3  (engine RE5.5, V7-D + Rule B)         built 2026-11-07
+=====================================================================================
+A standalone app for Kalshi's ETH 15-minute market (KXETH15M, priced on ETHUSD_RTI).
+It shares NOTHING with any other BIGBET app. Run it in its own PowerShell window:
+
+    python .\BIGBET_LIVE_STUDIO_V12.py
+
+FIRST START: the app opens Settings once. Type your Kalshi key ID and choose your key file
+yourself (it is saved only in C:\Users\<you>\.bigbet\settings_eth.json).
+
+Everything ETH keeps is inside C:\Users\<you>\BIGBET_ETH_DATA:
+  journal, trade record, size ladder, exports (BIGBET_ETH_...zip), top-up ledger, and
+  DAILY_GUARD\  -> ETH_PAPER_DAILY_GUARD.sqlite3 / ETH_LIVE_DAILY_GUARD.sqlite3 (separate:
+                   a paper stop never blocks live, a live stop never blocks paper)
+
+Safety: it refuses to use any other app's data folder, refuses non-ETH markets, and never
+takes top-up cash from the shard another bot trades on.
+
+Use: PAPER or LIVE, in its own PowerShell window, any time, also while the BTC app is running.
+     Export after each session and send the zip. Live starts at $10 (own ETH size ladder).

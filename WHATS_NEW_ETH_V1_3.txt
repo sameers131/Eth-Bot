@@ -1,0 +1,17 @@
+BIGBET ETH Live Studio V1.3  (engine RE5.5)          built 2026-11-07
+=====================================================================
+ETH only. ETH V1.2 + RULE B. Start the same way, in its own PowerShell window:
+    python .\BIGBET_LIVE_STUDIO_V12.py
+
+RULE B (replay of 64 ETH markets: 28 trades / 2 losing / +$5.28, vs 30 / 2 / +$4.37 for the old rules)
+  * Entry price 90-99c (was 95-99c).
+  * Lead at least 2.0x volatility at the 180 s and 150 s checkpoints (was 1.8x),
+    at least 1.6x at 120/105/90/60/45/30 s (was 1.4x).
+  * Contract cap follows the 90c floor: size/0.90 (11 at $10). The DOLLAR cap is unchanged:
+    a $10 trade never costs more than $10 including fees.
+
+UNCHANGED
+  Everything else in ETH V1.2: 0.03% cushion, 8 minute-pairs, checkpoints, best ask + 1c limit, V7-C stop-loss,
+  any loss stops new trades for the day, connection retries, glitch-market skip, safe auto-restart,
+  separate paper/live stop counters, own data folder BIGBET_ETH_DATA and settings_eth.json.
+  No Early-Hold in this version.

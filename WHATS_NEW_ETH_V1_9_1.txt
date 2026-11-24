@@ -1,0 +1,13 @@
+BIGBET ETH Live Studio V1.9.1  (engine RE5.5)          built 2026-11-14
+=====================================================================
+Start exactly like before:  python .\BIGBET_LIVE_STUDIO_V12.py
+Same data folder and settings as V1.9. Nothing to copy. Trading rules UNCHANGED
+(steady-60-s entries, 10-s stop, sizes, daily stop, override, weekly stop, news skip).
+
+ONE FIX: a momentary bad reading from the ETH price feed no longer shuts the session down.
+  Nov 14, 11:52 AM: Kalshi's ETHUSD_RTI feed returned one stale/implausible value. V1.9 halted at
+  once and sat idle until 5:15 PM (~5 1/2 hours, ~20 markets missed).
+  V1.9.1: the bad value is still rejected (never used), but it now gets the same 2-minute grace as
+  a Kalshi connection blip: retry, skip that 15-minute market, keep going.
+  If the feed stays bad for more than 2 minutes, the bot still stops safely, and the app's existing
+  safe auto-restart (only when flat + account matches, at most 3 per session) can bring it back.

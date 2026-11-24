@@ -1,0 +1,22 @@
+BIGBET ETH Live Studio V1.9.3  (engine RE5.5)          built 2026-11-16
+=====================================================================
+Start exactly like before:  python .\BIGBET_LIVE_STUDIO_V12.py
+Same data folder and settings. Trading rules UNCHANGED from V1.9.2 (no trading file changed).
+
+NEW: MARKET MOOD light (above the market table). Display only - it never blocks or places a trade.
+  * While the app is open (session running or not) it reads Kalshi's ETH index every 10 seconds
+    (read-only, uses your key) and keeps 3 hours of prices in mood_samples.json in your data folder.
+  * At the start of each 15-minute market it rates the PREVIOUS market by how much ETH moved per
+    minute, using levels from 359 recorded ETH markets:
+        LOW    under 0.045% per minute     green  "OK to trade"
+        MEDIUM 0.045% - 0.072%             green  "OK to trade"
+        HIGH   0.072% and up               RED    "stay away from the next market"
+  * It also shows the current market so far (turns yellow if it is turning HIGH) and the last hour.
+  * If the previous market has no data (app was closed), it judges the current market instead.
+
+WHY HIGH = stay away (V1.9.2 rules, 154 simulated trades at $10):
+  after LOW 41 trades, 0 losing, +$8.43 | after MEDIUM 44, 0 losing, +$9.87 | after HIGH 41, 1 losing, +$2.15
+  Weakest after HIGH in both halves of the data. Skipping trades after HIGH: 113 trades, 1 losing, +$22.73
+  (vs 154 trades, 2 losing, +$24.88).
+  Nov 14 evening: the light was RED (HIGH) at both losing entries (6:40 PM and 7:09 PM).
+  Honest limit: it also turns red on many nights that would have been fine (e.g. the 5:45 PM win).

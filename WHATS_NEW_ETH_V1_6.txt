@@ -1,0 +1,10 @@
+BIGBET ETH Live Studio V1.6  (engine RE5.5)          built 2026-11-09
+=====================================================================
+ETH ONLY. ETH V1.6 = ETH V1.5 with ONE change: OVERRIDE AFTER EVERY LOSS.
+  * A loss still pauses new ETH trades automatically.
+  * "Entries allowed today" now shows a button: Override: trade today.
+    It works after EVERY loss; each time needs your Yes; the next loss pauses again.
+  * The session must be stopped and the account flat (the app checks Kalshi first).
+  * Never clears other pauses; the weekly stop and size ladder still apply.
+UNCHANGED: Rule C, stop-loss, sell pricing, fast checks, sizes, 10-hour runs.
+Start the same way:   python .\BIGBET_LIVE_STUDIO_V12.py
